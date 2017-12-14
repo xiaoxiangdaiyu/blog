@@ -1,0 +1,65 @@
+
+title: 雨打梨梦三村边
+subtitle: 潇湘待雨
+description: 潇湘待雨个人博客
+author: felix.pan
+language: zh-Hans
+
+url: http://xxdy.tech/
+root: /
+permalink: :year/:month/:day/:title/
+permalink_defaults:
+
+# Directory
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+i18n_dir: :lang
+skip_render:
+
+
+new_post_name: :title.md # File name of new posts
+default_layout: post
+titlecase: false # Transform title into titlecase
+external_link: true # Open external links in new tab
+filename_case: 0
+render_drafts: false
+post_asset_folder: false
+relative_link: false
+future: true
+highlight:
+  enable: true
+  line_number: true
+  auto_detect: false
+  tab_replace:
+  
+
+index_generator:
+  path: ''
+  per_page: 10
+  order_by: -date
+  
+
+default_category: uncategorized
+category_map:
+tag_map:
+
+
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+
+
+per_page: 10
+pagination_dir: page
+
+
+theme: hexo-theme-next
+
+
+deploy:
+  type: git
+  repo: git@github.com:xiaoxiangdaiyu/xiaoxiangdaiyu.github.io.git
+
