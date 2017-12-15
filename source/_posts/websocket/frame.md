@@ -21,23 +21,22 @@ WebSocket 服务器简单来说就是一个遵循特殊协议监听服务器任�
 
 ## 客户端握手请求   
 
-尽管我们在开发一个服务器，客户端仍然需要发起一个Websocket握手过程。因此我们必须知道如何解析客户端的请求。客户端将会发送一个标准的HTTP请求，大概像下面的例子(HTTP版本必须1.1及以上，请求方式为GET)。   
- 
-```  
+尽管我们在开发一个服务器，客户端仍然需要发起一个Websocket握手过程。因此我们必须知道如何解析客户端的请求。客户端将会发送一个标准的HTTP请求，大概像下面的例子(HTTP版本必须1.1及以上，请求方式为GET)。     
+```
     GET /chat HTTP/1.1
     Host: example.com:8000
     Upgrade: websocket
     Connection: Upgrade
     Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==
-    Sec-WebSocket-Version: 13  
-```     
- 
- 
+    Sec-WebSocket-Version: 13 
+```
+
 此处客户端可以发起扩展或者子协议，在[Miscellaneous](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_servers#Miscellaneous)查看更多细节。同样，公共的headers像User-Agent, Referer, Cookie, or authentication等同样可以包括，一句话做你想做的。这些并不直接和WebSocket相关，忽略掉他们也是安全的，在很多公共的设置中，会有一个代理服务器来处理这些信息。 
 
 如果有的header不被识别或者有非法值，服务器应该发送'400 Bad Request'并立刻关闭socket，通常也会在HTTP返回体中给出握手失败的原因，不过这些信息可能不会被展示(因为浏览器不会展示他们)。如果服务器不识别WebSockets的版本，应该返回一个Sec-WebSocket-Version 消息头，指明可以接受的版本(最好是V13,及最新)。下面一起看一下最神秘的消息头Sec-WebSocket-Key。    
 
-### 提示：
+### 提示  
+
 * 所有的浏览器将会发送一个Origin header,我们可以使用这个header来做安全限制（检查是否相同的origin）如果并不是期望的origin返回一个403 Forbidden。然后注意下那些非浏览器的客户端可以发送一个伪造的origin，很多应用将会拒绝没有该消息头的请求。  
 * 请求资源定位符(这里的/chat)在规范中没有明确的定义，所以很多人巧妙的使用它，让一个服务器处理多个WebSocket 应用。例如，example.com/chat可以指向一个多用户聊天app，而相同服务器上的/game指向多用户的游戏。即[相同域名下的路径可以指向不同应用]()。   
 * 规范的HTTP code只可以在握手之前使用，当握手成功之后，应该使用不同的code集合。请查看规范第7.4节   
@@ -46,16 +45,17 @@ WebSocket 服务器简单来说就是一个遵循特殊协议监听服务器任�
 
 当服务器接受到请求时，应该发送一个相当奇怪的响应，看起来大概这个样子，不过仍然遵循HTTP规范。 请注意每一个header以\r\n结尾并且在最后一个后面加入额外的\r\n。 
 
-```  
+```
     HTTP/1.1 101 Switching Protocols
     Upgrade: websocket
     Connection: Upgrade
     Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo=
-```  
+```
 
-此外，服务器可以在这里决定扩展或者子协议请求。更多详情请查看[Miscellaneous](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_servers#Miscellaneous)。Sec-WebSocket-Accept 部分很有趣，服务器必须基于客户端请求的Sec-WebSocket-Key 中得到它，具体做法如下：将Sec-WebSocket-Key 和"258EAFA5-E914-47DA-95CA-C5AB0DC85B11"链接，通过SHA-1 hash获得结果，然后返回该结果的base64编码。
+此外，服务器可以在这里决定扩展或者子协议请求。更多详情请查看[Miscellaneous](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_servers#Miscellaneous)。Sec-WebSocket-Accept 部分很有趣，服务器必须基于客户端请求的Sec-WebSocket-Key 中得到它，具体做法如下：将Sec-WebSocket-Key 和"258EAFA5-E914-47DA-95CA-C5AB0DC85B11"链接，通过SHA-1 hash获得结果，然后返回该结果的base64编码。   
 
-###提示  
+### 提示  
+
 因为这个看似复杂的过程存在，所以客户端不用关心服务器是否支持websocket。另外，该过程的重要性还是在于安全性，如果一个服务器将一个Websocket连接作为http请求解析的话，将会有不小的问题。   
 
 因此，如果key是"dGhlIHNhbXBsZSBub25jZQ=="，Accept将会是"s3pPLMBiTxaQ9kYGzzhZRbK+xOo="，一旦服务器发送这些消息头，握手协议就完成了。   
@@ -122,12 +122,11 @@ FIN 表明是否是数据集合的最后一段消息，如果为0，服务器继
 如果MASK位被设置(当然它应该被设置，对于一个从客户端到服务器的消息)，读取后4字节（即32位），即加密的key。一旦数据长度和加密key被解码，我们可以直接从socket中读取成批的字节。获取编码的数据和掩码key，将其解码，循环遍历加密的字节（octets，text数据的单位）并且将其与第（i%4）位掩码字节(即i除以4取余)进行异或运算，如果用js就如下所示(该规则就是加密解密的规则而已，没必要深究，大家知道如何使用就好)。 
 
 ```js
-var DECODED = "";
+    var DECODED = "";
     for (var i = 0; i < ENCODED.length; i++) {
         DECODED[i] = ENCODED[i] ^ MASK[i % 4];
     }
-``` 
-
+```
 现在我们可以知道我们应用上解码之后的数据具体含义了。
 
 ## 消息分割
@@ -135,8 +134,8 @@ var DECODED = "";
 FIN和opcode字段共同工作来讲一个消息分解为单独的帧，该过程叫做消息分割，只有在opcodes为0x0-0x2时才可用（前面也提到，当前版本其他数值无意义）。  
 
 回想一下，opcode指明了一个帧的将要做什么，如果是0x1，数据是text。如果是0x2，诗句是二进制数据。然而当其为0x0时，该帧是一个继续帧，表示服务器应该将该帧的有效数据和服务器收到的最后一帧链接起来。这是一个草图，指明了当客户端发送text消息时，第一个消息在一个单独的帧里发送，然而第二个消息却包括三个帧，服务器如何反应。FIN和opcode细节仅仅对客户端展示。看一下下面的例子应该会更容易理解。
-  
-```   
+    
+```
 Client: FIN=1, opcode=0x1, msg="hello"
 Server: (消息传输过程完成) Hi.
 Client: FIN=0, opcode=0x1, msg="and a"
@@ -145,8 +144,7 @@ Client: FIN=0, opcode=0x0, msg="happy new"
 Server: (监听，有效数据与上面的消息拼接)
 Client: FIN=1, opcode=0x0, msg="year!"
 Server: (消息传输完成) Happy new year to you too!
-     
-``` 
+```
  
 注意:第一帧包括一个完全的消息(FIN=1并且opcode!=0x0)，因此当服务器发现结束时可以返回。第二帧有效数据为text(opcode=0x1)，但是完整的消息没有到达(FIN=0)。该消息所有剩下的部分通过继续帧发送(opcode=0x0)，并且最后以帧通过FIN=1表明身份。  
 
@@ -178,19 +176,18 @@ WebSocket 扩展和子协议在握手过程中通过headers进行约定。有时
 GET /chat HTTP/1.1
 ...
 Sec-WebSocket-Protocol: soap, wamp
-```  
-或者等价的写法
-
-```
+//或者等价的写法   
 ...
 Sec-WebSocket-Protocol: soap
 Sec-WebSocket-Protocol: wamp
 ```
+
 现在，服务器必须选择客户端建议并且支持的一种协议。如果多余一个，发送客户端发送过来的第一个。想象我们的服务器可以使用soap和wamp中的一个，然后，返回的握手中将会发送如下形式。
 
 ```
 Sec-WebSocket-Protocol: soap
 ```
+
 
 服务器不能发送超过一个的Sec-Websocket-Protocol消息头，如果服务器不想使用任一个子协议，应该不发送Sec-WebSocket-Protocol 消息头。发送一个空白的消息头是错误的。客户端可能会关闭连接如果不能获得期望的子协议。    
 

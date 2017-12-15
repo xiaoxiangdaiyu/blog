@@ -21,7 +21,8 @@ date: 2017-11-22
 
 客户端的握手请求是一个标准的HTTP请求，大概像下面的例子。   
  
-```  
+    
+```
 GET / HTTP/1.1  //HTTP版本必须1.1及以上，请求方式为GET
 Host: localhost:8081 //本地项目
 Connection: Upgrade 
@@ -36,8 +37,7 @@ Accept-Language: zh-CN,zh;q=0.9,en;q=0.8
 Cookie: optimizelyEndUserId=oeu1505722530441r0.5993643212774391; _ga=GA1.1.557695983.1505722531
 Sec-WebSocket-Key: /2R6uuzPqLT/6z8fnZfN3w==   //握手返回基于该密钥
 Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
-  
-```     
+```
 上面列出了实际例子中的请求头，内容由浏览器生成，需要注意的部分如下。  
 
 * HTTP版本必须1.1及以上，请求方式为GET
@@ -57,19 +57,19 @@ Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
 
 #### 返回格式  
 
-```js  
+```
     HTTP/1.1 101 Switching Protocols
     Upgrade: websocket
     Connection: Upgrade
     Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo=
-``` 
+```
 请注意每一个header以\r\n结尾并且在最后一个后面加入额外的\r\n。 
 
 这里的Sec-WebSocket-Accept 就是基于请求头中Sec-WebSocket-Key来生成。规则如下：  
 Sec-WebSocket-Key 和"258EAFA5-E914-47DA-95CA-C5AB0DC85B11"链接，通过SHA-1 hash获得结果，然后返回该结果的base64编码。
 代码如下：
-
-```js  
+  
+```js
 // 指定拼接字符
 var ws_key = '258EAFA5-E914-47DA-95CA-C5AB0DC85B11';
 // 生成相应key
@@ -85,7 +85,7 @@ function handShake(socket, headers) {
     socket.write('Sec-WebSocket-Accept: ' + resSWKey + '\r\n');
     socket.write('\r\n');
 }
-```  
+```
 
 这样我们的握手协议就算完成了，此时会触发客户端websocket的onopen事件，即websocket打开，可以进行通信
 
