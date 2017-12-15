@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -96,7 +96,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Muse',
     version: '5.1.3',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -467,6 +467,533 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://xxdy.tech/2017/11/22/websocket/node/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="felix.pan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="雨打梨梦三村边">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/22/websocket/node/" itemprop="url">实现一个websocket服务器-node</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-22T00:00:00+08:00">
+                2017-11-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>早点时候翻译了篇<a href="https://github.com/xiaoxiangdaiyu/chartroom/blob/master/src/websocket/README.md" target="_blank" rel="noopener">实现一个websocket服务器-理论篇 </a>，简单介绍了下理论基础，本来打算放在一起，但是感觉太长了大家可能都看不下去。不过发现如果拆开的话，还是不可避免的要提及理论部分。用到的地方就简要回顾一下好了。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/22/websocket/node/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://xxdy.tech/2017/11/06/websocket/frame/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="felix.pan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="雨打梨梦三村边">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/06/websocket/frame/" itemprop="url">实现一个websocket服务器-理论篇</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-06T10:50:06+08:00">
+                2017-11-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>本文是Writing WebSocket servers的中文文档，翻译自MDN<a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_servers" target="_blank" rel="noopener">Writing WebSocket servers</a>。篇幅略长，个人能力有限难免有所错误，抛砖引玉共同进步。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/06/websocket/frame/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://xxdy.tech/2017/10/23/webpack/loader/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="felix.pan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="雨打梨梦三村边">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/23/webpack/loader/" itemprop="url">如何开发webpack plugin</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-23T00:00:00+08:00">
+                2017-10-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>继上回介绍了<a href="https://github.com/xiaoxiangdaiyu/w-loader/blob/master/loader/DOC.md" target="_blank" rel="noopener">如何开发webpack loader</a> 之后。趁热打铁，来继续看下webpack另一个核心组成：plugin。<br>下面也和loader一样，让我们一起从基本的<a href="https://webpack.js.org/contribute/writing-a-plugin/" target="_blank" rel="noopener">官方文档</a>着手看起。  </p>
+<h2 id="loader和plugin的差别"><a href="#loader和plugin的差别" class="headerlink" title="loader和plugin的差别"></a>loader和plugin的差别</h2><ul>
+<li>loader : 顾名思义，某种类型资源文件的加载器，作用于某种类型的文件上。webpack本身也是不能直接打包这些非js文件的，需要一个转化器即loader。 loader本身是单一，简单的，不能将多个功能放在一个loader里。   </li>
+<li>plugin比loaders更加先进一点，你可以扩展webpack的功能来满足自己的需要，换句话说，loader不能满足的时候，就需要plugin了。</li>
+</ul>
+<h2 id="如何开发一个plugin"><a href="#如何开发一个plugin" class="headerlink" title="如何开发一个plugin"></a>如何开发一个plugin</h2><p>插件将webpack引擎所有的能力暴露给第三方开发者。通过阶梯式的build回调，开发者可以在webpack编译过程中加入自己的行为。开发插件比loaders更加先进一点，因为你需要理解webpack一些底层构成来添加钩子回调。准备好读一些源码吧。       </p>
+<h2 id="开发一个插件"><a href="#开发一个插件" class="headerlink" title="开发一个插件"></a>开发一个插件</h2><p>一个webpack的插件由以下几方面组成：  </p>
+<ul>
+<li>一个非匿名的js函数   </li>
+<li>在它的原型对象上定义apply方法  </li>
+<li>指明挂载自身的webpack钩子事件  </li>
+<li>操作webpack内部情况的特定数据  </li>
+<li>方法完成时唤起webpack提供的回调<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// A named JavaScript function.</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyExampleWebpackPlugin</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">   <span class="comment">//</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// Defines `apply` method in it's prototype.</span></span><br><span class="line">MyExampleWebpackPlugin.prototype.apply = <span class="function"><span class="keyword">function</span>(<span class="params">compiler</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Specifies webpack's event hook to attach itself.</span></span><br><span class="line">  compiler.plugin(<span class="string">'webpacksEventHook'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">compilation <span class="regexp">/* Manipulates webpack internal instance specific data. */</span>, callback</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"This is an example plugin!!!"</span>);</span><br><span class="line">    <span class="comment">// Invokes webpack provided callback after functionality is complete.</span></span><br><span class="line">    callback();</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;    </span><br><span class="line"><span class="string">``</span><span class="string">`  </span></span><br><span class="line"><span class="string">## 编译器和编译     </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">开发插件过程中最重要的两个对象就是compiler 和compilation。理解他们的职责是扩展webpack功能最重要的第一步   </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">编译器对象就是webpack完整的配置环境。该对象一经webpack开始执行就创建，并且通过所有可操作的设置项来设置，例如options，loaders，和plugins。当在webpack环境中应用一个插件时，该插件将会接受到一个指向该编译器的引用。使用该编译器来访问主要的webpack环境。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">compilation对象是一个单独的关于版本资源的创建。当执行webpack 开发中间件时，当一个文件的更改被检测到就会创建一个新的compilation对象，因此产生了一些可被编译的资源。一个compilation展现了一些信息关于当前模块资源状态、编译资源、改变的文件、监视的依赖等信息。同样提供了很多关键的回调，当插件扩展自定义行为时   </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">这两个组件是webpack 插件必需的组成部分(特别是compilation)，所以开发者如果熟悉下面这些源文件将会获益不小。   </span></span><br><span class="line"><span class="string">* [Compiler Source](https://github.com/webpack/webpack/blob/master/lib/Compiler.js)  </span></span><br><span class="line"><span class="string">* [Compilation Source](https://github.com/webpack/webpack/blob/master/lib/Compilation.js)   </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">## 插件的基本结构   </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">插件是在原型中带有一个apply方法的实例化对象，当安装插件的时候，这个apply方法就会被webpack调用一次。apply方法提供一个指向当前活动的webpack compiler的引用，该引用允许访问compiler的回调。一个简单的插件结构如下：  </span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>js</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">HelloWorldPlugin</span>(<span class="params">options</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Setup the plugin instance with options...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">HelloWorldPlugin.prototype.apply = <span class="function"><span class="keyword">function</span>(<span class="params">compiler</span>) </span>&#123;</span><br><span class="line">  compiler.plugin(<span class="string">'done'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Hello World!'</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = HelloWorldPlugin;   </span><br><span class="line"><span class="string">``</span><span class="string">`    </span></span><br><span class="line"><span class="string">然后安装一个插件，仅仅需要在你的 webpack config 中plugins对应的数组中，增加一个插件的实例即可   </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>js</span><br><span class="line"><span class="keyword">var</span> HelloWorldPlugin = <span class="built_in">require</span>(<span class="string">'hello-world'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> webpackConfig = &#123;</span><br><span class="line">  <span class="comment">// ... config settings here ...</span></span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="keyword">new</span> HelloWorldPlugin(&#123;<span class="attr">options</span>: <span class="literal">true</span>&#125;)</span><br><span class="line">  ]</span><br><span class="line">&#125;;</span><br><span class="line"><span class="string">``</span><span class="string">` </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">## 访问编译    </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">通过使用编译器对象，你可能会绑定提供指向每个新的compilation应用的回调。这些compilations提供了编译过程中很多步骤的回调函数。   </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>js</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">HelloCompilationPlugin</span>(<span class="params">options</span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">HelloCompilationPlugin.prototype.apply = <span class="function"><span class="keyword">function</span>(<span class="params">compiler</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Setup callback for accessing a compilation:</span></span><br><span class="line">  compiler.plugin(<span class="string">"compilation"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">compilation</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Now setup callbacks for accessing compilation steps:</span></span><br><span class="line">    compilation.plugin(<span class="string">"optimize"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"Assets are being optimized."</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = HelloCompilationPlugin;</span><br><span class="line"><span class="string">``</span><span class="string">`      </span></span><br><span class="line"><span class="string">如果想了解更多关于在编译器、编译中哪些回调是可用的和其他一些更重要的对象，轻戳[plugin文档](https://doc.webpack-china.org/api/plugins/) </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">## 异步插件    </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">一些编译插件步骤是异步的并且提供了一个当你的插件结束编译时必须调用的回调方法</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>js</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">HelloAsyncPlugin</span>(<span class="params">options</span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">HelloAsyncPlugin.prototype.apply = <span class="function"><span class="keyword">function</span>(<span class="params">compiler</span>) </span>&#123;</span><br><span class="line">  compiler.plugin(<span class="string">"emit"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">compilation, callback</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Do something async...</span></span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"Done with async work..."</span>);</span><br><span class="line">      callback();</span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = HelloAsyncPlugin;</span><br><span class="line"><span class="string">``</span><span class="string">`  </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">## 示例  </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">一旦我们打开了webpack编译器和每个单独编译的大门，我们可以使用引擎做的事情是无限可能的。我们可以重新格式化存在的文件、创建派生文件、完全伪造一个新文件  </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">让我们写个简单的示例插件，目的是生成一个新的名字为filelist.md的文件。内容如下：列出构建过程中所有的生成文件。这个插件大概如下：</span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>js</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">FileListPlugin</span>(<span class="params">options</span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">FileListPlugin.prototype.apply = <span class="function"><span class="keyword">function</span>(<span class="params">compiler</span>) </span>&#123;</span><br><span class="line">  compiler.plugin(<span class="string">'emit'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">compilation, callback</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Create a header string for the generated file:</span></span><br><span class="line">    <span class="keyword">var</span> filelist = <span class="string">'In this build:\n\n'</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Loop through all compiled assets,</span></span><br><span class="line">    <span class="comment">// adding a new line item for each filename.</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> filename <span class="keyword">in</span> compilation.assets) &#123;</span><br><span class="line">      filelist += (<span class="string">'- '</span>+ filename +<span class="string">'\n'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Insert this list into the webpack build as a new file asset:</span></span><br><span class="line">    compilation.assets[<span class="string">'filelist.md'</span>] = &#123;</span><br><span class="line">      source: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> filelist;</span><br><span class="line">      &#125;,</span><br><span class="line">      size: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> filelist.length;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    callback();</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = FileListPlugin;</span><br><span class="line"><span class="string">``</span><span class="string">`     </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">## 不同类型的插件   </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">插件可以依据其注册的事件来分成不同的类型，每个事件钩子决定了在触发时如何调用该插件。  </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">#### 同步类型 </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">这种类型的实例使用如下方式来调用插件  </span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>js</span><br><span class="line">applyPlugins(name: string, <span class="attr">args</span>: any...)</span><br><span class="line"></span><br><span class="line">applyPluginsBailResult(name: string, <span class="attr">args</span>: any...)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>这意味着每一个插件的回调将伴随特定参数args依次被调用。对插件而言这是最简单的格式。很多有用的事件例如”compile”, “this-compilation”，是期望插件同步执行的。  </p>
+<h4 id="流式类型"><a href="#流式类型" class="headerlink" title="流式类型"></a>流式类型</h4><p>waterfall Plugins 通过下面的方式调用  </p>
+<pre><code class="js">applyPluginsWaterfall(name: string, <span class="attr">init</span>: any, <span class="attr">args</span>: any...)
+</code></pre>
+<h4 id="异步类型"><a href="#异步类型" class="headerlink" title="异步类型"></a>异步类型</h4><p>当所有的插件被使用下面的方法异步调用的时候，即为异步插件</p>
+<pre><code class="js">applyPluginsAsync(name: string, <span class="attr">args</span>: any..., <span class="attr">callback</span>: (err?: <span class="built_in">Error</span>) -&gt; <span class="keyword">void</span>)
+</code></pre>
+<p>插件控制方法被调用，参数是所有的args和带有这种标志(err?: Error) -&gt; void的回调。handler方法按照注册回调在所有handlers被调用之后的顺序来调用。对于”emit”, “run”事件来说这是很常用的模式。</p>
+<h4 id="异步流"><a href="#异步流" class="headerlink" title="异步流"></a>异步流</h4><p>这种插件将按照流失方式来被异步使用  </p>
+<pre><code class="js">applyPluginsAsyncWaterfall(name: string, <span class="attr">init</span>: any, <span class="attr">callback</span>: (err: <span class="built_in">Error</span>, <span class="attr">result</span>: any) -&gt; <span class="keyword">void</span>)
+</code></pre>
+<p>这种插件的handler被调用时，参数是当前value和带有这种标志(err?: Error) -&gt; void的回调。当被调用时，nextValue是下一个handler的当前值。第一个handler的当前值是init。所有的handler被调用之后，最后一个值将会被赋给回调。如果有的handler传递了一个err的值，回调将会接受err，并且不会有其他handler被第阿勇。这种插件模式使用与于”before-resolve” and “after-resolve”之类的事件。   </p>
+<h4 id="异步系列"><a href="#异步系列" class="headerlink" title="异步系列"></a>异步系列</h4><p>这种和异步插件很相似，不同在于如果有点插件注册失败，将不会调用任何插件   </p>
+<pre><code class="js">applyPluginsAsyncSeries(name: string, <span class="attr">args</span>: any..., <span class="attr">callback</span>: (err: <span class="built_in">Error</span>, <span class="attr">result</span>: any) -&gt; <span class="keyword">void</span>)
+</code></pre>
+<h4 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h4><p>至此，如何开发一个基本的webpack plugin 我相信大家已经知道了，如果还不太清楚的话，可以移步<a href="https://github.com/xiaoxiangdaiyu/w-loader" target="_blank" rel="noopener">w-loader</a>查看。<br>另外，对于我这种英语渣渣来说，翻译起来确实难度蛮大的。此处抛砖引玉，希望大家共同探讨学习。   </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://xxdy.tech/2017/10/14/webpack/plugin/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="felix.pan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="雨打梨梦三村边">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/14/webpack/plugin/" itemprop="url">如何开发webpack plugin</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-14T00:00:00+08:00">
+                2017-10-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="关于webpack"><a href="#关于webpack" class="headerlink" title="关于webpack"></a>关于webpack</h2><p>作为近段时间风头正盛的打包工具，webpack基本占领了前端圈。相信你都不好意思说不知道webpack。<br>有兴趣的同学可以参考下我很早之前的<a href="http://www.cnblogs.com/pqjwyn/p/5380689.html" target="_blank" rel="noopener">webpack简介</a> .<br>确实webpack万事万物皆模块的思路真是极大的方便了我们的开发，将css，图片等文件都能打包的功能离不开形形色色的loader。<br>对于一个事情要知其然更要知其所以然，抱着这个心态我们一起来看下loader的相关知识及如何开发。   </p>
+<h4 id="学习方法"><a href="#学习方法" class="headerlink" title="学习方法"></a>学习方法</h4><p>对于一个新事物最好的学习方法，我认为是其官方文档。对于loader，将其官方文档看一遍，就知道如何开发最简单的loader了。<br>只是其<a href="https://webpack.js.org/contribute/writing-a-loader/" target="_blank" rel="noopener">官方文档</a>是英文的，我就顺手翻译了一下，一方面加深自己理解。另一方面为其他同学提供个参考。<br>我相信看完文档你就知道如何开发一个loader了。  </p>
+<h2 id="什么是loader"><a href="#什么是loader" class="headerlink" title="什么是loader"></a>什么是loader</h2><p>loader是一个对面暴露一个方法的node包.当遇到某些资源需要被转换时调用该方法。  </p>
+<h4 id="简单情况"><a href="#简单情况" class="headerlink" title="简单情况"></a>简单情况</h4><p>只有一个loader来处理某个文件时，该loader被调用时只有一个参数，这个参数是该文件的内容转化之后的字符串。  </p>
+<p>loader在function执行时可以通过this context来访问laoder API 以便更高效的开发。  </p>
+<p>一个仅仅需要一个值的同步loader可以简单的return 自己。其他情况下，loader可以通过this.callback(err, values…)返回一系列的值。error同样传递给this.callback或者在loader中抛出。  </p>
+<p>loader期望返回1-2个值，第一个是处理之后作为string或者buffer返回的js代码。第二个是SourceMap或者js 对象   </p>
+<h4 id="复杂情况"><a href="#复杂情况" class="headerlink" title="复杂情况:"></a>复杂情况:</h4><p>当多个loader被链式调用时，只有最后一个loader获得资源文件。<br>同时只有第一个loader被期望返回1-2个值(即上面提到的JavaScript和SourceMap)。<br>其他loader接收值由上一个loader传递。  </p>
+<p>换句话说，链式loader执行顺序从右至左或者自下而上。<br>举个栗子：下面这段代码的执行顺序就是自下而上  foo-loader==&gt;bar-loader<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>: &#123;</span><br><span class="line">  loaders: [</span><br><span class="line">    &#123;</span><br><span class="line">      test: <span class="regexp">/\.js/</span>,</span><br><span class="line">      loaders: [</span><br><span class="line">        <span class="string">'bar-loader'</span>,</span><br><span class="line">        <span class="string">'foo-loader'</span></span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line"><span class="string">``</span><span class="string">`  </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">#### 注意：当前weboack只会在nodemodules文件夹下面搜索你指定的loader   </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">如果你的文件夹不在该目录下需要在config下面增加一项配置:  </span></span><br><span class="line"><span class="string">即默认访问node_modules，你的文件夹不在的话就需要手动在配置文件里加上了。</span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>js  </span><br><span class="line">    resolveLoader: &#123;</span><br><span class="line">        modules: [<span class="string">'node_modules'</span>, path.resolve(__dirname, <span class="string">'loaders'</span>)]</span><br><span class="line">    &#125;</span><br><span class="line"><span class="string">``</span><span class="string">`   </span></span><br><span class="line"><span class="string">#### 温馨提示</span></span><br><span class="line"><span class="string">ps：经过自身实践发现这样写是错的，不需要通过path去解析，直接将文件目录写入即可。    </span></span><br><span class="line"><span class="string">一般来说loader都会发布到npm上进行管理，这种状况不用担心，但是开发阶段如果要自行测试，就面对这种情况了。   </span></span><br><span class="line"><span class="string">例如，我手写的myloader在loaders下面，例子如下。  </span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>js   </span><br><span class="line">     resolveLoader:&#123;</span><br><span class="line">        modules: [<span class="string">'node_modules'</span>,<span class="string">'loader'</span>]</span><br><span class="line">    &#125;</span><br><span class="line"><span class="string">``</span><span class="string">`   </span></span><br><span class="line"><span class="string">## Examples     </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">就这么简单就是个普通的loader</span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>js  </span><br><span class="line">    <span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">source,map</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.cacheable &amp;&amp; <span class="keyword">this</span>.cacheable()</span><br><span class="line">    <span class="keyword">this</span>.value = source</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'/*copy@ xiaoxiangdaiyu*/'</span>+<span class="built_in">JSON</span>.stringify(source)</span><br><span class="line">    &#125;</span><br><span class="line"><span class="string">``</span><span class="string">`   </span></span><br><span class="line"><span class="string">## 开发指南  </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">loader需要遵循以下事项。   </span></span><br><span class="line"><span class="string">以下事项按优先级排列，第一条具有最高优先级。   </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">#### 一、单一任务    </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">loaders可以被链式调用，为每一步创建一个loader而非一个loader做所有事情  </span></span><br><span class="line"><span class="string">也就是说，在非必要的状况下没有必要将他们转换为js。  </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">例如：通过查询字符串将一个字符串模板转化为html。   </span></span><br><span class="line"><span class="string">如果你写了个loader做了所有事情那么你违背了loader的第一条要求。   </span></span><br><span class="line"><span class="string">你应该为每一个task创建一个loader并且通过管道来使用它们  </span></span><br><span class="line"><span class="string">* jade-loader: 转换模板为一个module   </span></span><br><span class="line"><span class="string">* apply-loader: 创建一个module并通过查询参数来返回结果  </span></span><br><span class="line"><span class="string">* html-loade: 创建一个处理html并返回一个string的模块   </span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">#### 二、创建moulde话的模块，即正常的模块   </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">loader产出的module应该和遵循和普通的module一样的设计原则。  </span></span><br><span class="line"><span class="string">举个例子，下面这样设计是不好的，没有模块化，依赖全局状态  </span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>js</span><br><span class="line">    <span class="built_in">require</span>(<span class="string">"any-template-language-loader!./xyz.atl"</span>);</span><br><span class="line">    <span class="keyword">var</span> html = anyTemplateLanguage.render(<span class="string">"xyz"</span>);</span><br><span class="line"><span class="string">``</span><span class="string">`  </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">#### 三、尽量表明该loader是否可以缓存  </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">大部分loaders是cacheable，所以应该标明是否cacheable。   </span></span><br><span class="line"><span class="string">只需要在loader里面调用即可  </span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>js  </span><br><span class="line">    <span class="comment">// Cacheable identity loader</span></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">source</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.cacheable();</span><br><span class="line">	<span class="keyword">return</span> source;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="string">``</span><span class="string">`  </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">#### 四、不要在运行和模块之间保存状态     </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">* 一个loader相对于其他编译后的模块应该是独立的。 除非其可以自己处理这些状态  </span></span><br><span class="line"><span class="string">* 一个loader相对于同一模块之前的编译过程应该是独立的。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">#### 五、标明依赖   </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">如果该loader引用了其他资源（例如文件系统）， 必须声明它们。这些信息用来是缓存的loader失效并且重新编译它们  </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>js  </span><br><span class="line">    <span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">"path"</span>);</span><br><span class="line">    <span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">source</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.cacheable();</span><br><span class="line">	<span class="keyword">var</span> callback = <span class="keyword">this</span>.async();</span><br><span class="line">	<span class="keyword">var</span> headerPath = path.resolve(<span class="string">"header.js"</span>);</span><br><span class="line">	<span class="keyword">this</span>.addDependency(headerPath);</span><br><span class="line">	fs.readFile(headerPath, <span class="string">"utf-8"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, header</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(err) <span class="keyword">return</span> callback(err);</span><br><span class="line">		callback(<span class="literal">null</span>, header + <span class="string">"\n"</span> + source);</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="string">``</span><span class="string">`    </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">#### 六、解析依赖  </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">很多语言都提供了一些规范来声明依赖，例如css中的 @import 和 url(...)。这些依赖应该被模块系统所解析。  </span></span><br><span class="line"><span class="string">##### 下面是两种解决方式：</span></span><br><span class="line"><span class="string">* 1、将它们转化成require   </span></span><br><span class="line"><span class="string">* 2、 用this.resolve方法来解析路径  </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">##### 下面是两个示例   </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">* 1、css-loader: 将依赖转化成require，即用require来替换@import和 url(...)，解析对其他样式文件的依赖  </span></span><br><span class="line"><span class="string">* 2、less-loader: 不能像css-loader那样做，因为所有的less文件需要一起编译来解析变量和mixins。因此其通过一个公共的路径逻辑来扩展less编译过程。这个公共的逻辑使用this.resolve来解析带有module系统配置项的文件。例如aliasing, custom module directories等。  </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">如果语言仅仅接受相对urls（如css中url(file) 总是代表./file），使用~来说明成模块依赖.  </span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>js  </span><br><span class="line">    url(file) -&gt; <span class="built_in">require</span>(<span class="string">"./file"</span>)</span><br><span class="line">    url(~<span class="built_in">module</span>) -&gt; <span class="built_in">require</span>(<span class="string">"module"</span>)</span><br><span class="line"><span class="string">``</span><span class="string">`  </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">#### 七、抽离公共代码  </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">extract common code  我感觉还是翻译成上面的标题比较好。其实所有语言都遵循该思想，即封装  </span></span><br><span class="line"><span class="string">不要写出来很多每个模块都在使用的代码，在loader中创建一个runtime文件，将公共代码放在其中</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">#### 八、避免写入绝对路径  </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">不要把绝对路径写入到模块代码中。它们将会破坏hash的过程当项目的根目录发生改变的时候。应该使用loader-utils的 stringifyRequest方法来绝对路径转化为相对路径。   </span></span><br><span class="line"><span class="string">例子：  </span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>js  </span><br><span class="line">    <span class="keyword">var</span> loaderUtils = <span class="built_in">require</span>(<span class="string">"loader-utils"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"var runtime = require("</span> +</span><br><span class="line">    loaderUtils.stringifyRequest(<span class="keyword">this</span>, <span class="string">"!"</span> + <span class="built_in">require</span>.resolve(<span class="string">"module/runtime"</span>)) +</span><br><span class="line">  <span class="string">");"</span>;</span><br><span class="line"><span class="string">``</span><span class="string">`  </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">#### 九、使用peerDependencies来指明依赖的库 </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">使用peerDependency允许应用开发者去在package.json里说明依赖的具体版本。这些依赖应该是相对开放的允许工具库升级而不需要重新发布loader版本。简而言之，对于peerDependency依赖的库应该是松耦合的，当工具库版本变化的时候不需要重新变更loader版本。  </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">#### 十、可编程对象作为查询项  </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">有些情况下，loader需要某些可编程的对象但是不能作为序列化的query参数被方法解析。例如less-loader通过具体的less-plugin提供了这种可能。这种情况下，loader应该允许扩展webpack的options对象去获得具体的option。为了避免名字冲突，基于loader的命名空间来命名是很必要的。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>js  </span><br><span class="line">     <span class="comment">// webpack.config.js</span></span><br><span class="line">    <span class="built_in">module</span>.exports = &#123;</span><br><span class="line">        ...</span><br><span class="line">    lessLoader: &#123;</span><br><span class="line">        lessPlugins: [</span><br><span class="line">        <span class="keyword">new</span> LessPluginCleanCSS(&#123;<span class="attr">advanced</span>: <span class="literal">true</span>&#125;)</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h4 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h4><p>至此，如何开发一个webpack loader 我相信大家已经知道了，如果还不太清楚的话，可以移步<a href="https://github.com/xiaoxiangdaiyu/w-loader" target="_blank" rel="noopener">w-loader</a>查看。<br>另外，对于我这种英语渣渣来说，翻译起来确实难度蛮大的。此处抛砖引玉，希望大家共同探讨学习。   </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -513,7 +1040,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -574,7 +1101,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
 
 
 
@@ -673,13 +1200,6 @@
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
-
-
 
   
 

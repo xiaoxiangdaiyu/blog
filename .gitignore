@@ -38,3 +38,5 @@ public/
 .idea/
 .vscode/
 .deploy_git/
+themes/hexo-theme-next/
+public/

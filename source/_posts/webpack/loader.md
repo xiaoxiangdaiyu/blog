@@ -4,7 +4,7 @@ date: 2017-10-23
 ---
 继上回介绍了[如何开发webpack loader](https://github.com/xiaoxiangdaiyu/w-loader/blob/master/loader/DOC.md) 之后。趁热打铁，来继续看下webpack另一个核心组成：plugin。  
 下面也和loader一样，让我们一起从基本的[官方文档](https://webpack.js.org/contribute/writing-a-plugin/)着手看起。  
-
+<!-- more -->
 ## loader和plugin的差别   
 
 *  loader : 顾名思义，某种类型资源文件的加载器，作用于某种类型的文件上。webpack本身也是不能直接打包这些非js文件的，需要一个转化器即loader。 loader本身是单一，简单的，不能将多个功能放在一个loader里。   
