@@ -76,7 +76,7 @@ var webpack = require('webpack');module.exports = {
 ```js
     entry: {
         index:'./codesplitting/c1/a.js',
-        other:'./codesplitting/c1/a.js'
+        other:'./codesplitting/c1/b.js'
     },
     output: {
         path: path.resolve(__dirname, './dist'),
