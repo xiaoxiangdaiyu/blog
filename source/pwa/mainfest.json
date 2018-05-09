@@ -1,0 +1,21 @@
+{
+    "name": "PQJ-PWA",
+    "short_name":"PQJ",
+    "description": "测试demo",
+    "start_url": "/index.html",
+    "icons": {
+      "128": "./asset/sw.jpg"
+    },
+    "developer": {
+      "name": "pqj",
+      "url": ""
+    },
+    "display": "standalone",
+    "background_color": "#287fc5",
+    "theme_color": "#fff",
+    "permissions": {
+        "desktop-notification": {
+          "description": "Needed for creating system notifications."
+        }
+      }
+}
