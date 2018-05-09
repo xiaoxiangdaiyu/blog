@@ -203,6 +203,7 @@ service worker可以帮组我们：
 
 * Dns-prefresh  
 * preconnect
+* preconnect
 * Preload（当前页面）
 * Prefetch(下个页面)  
 

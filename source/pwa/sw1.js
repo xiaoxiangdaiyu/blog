@@ -15,17 +15,18 @@ self.addEventListener('install',e=>{
     )
 })
 self.addEventListener('activate', e => {
-    const currentCaches = [PRECACHE, RUNTIME];
+      
     e.waitUntil(
-      Promise.all(
-        caches.keys().filter(name => {
-          return name !== PRECACHE
-        }).map(name => {
-          return caches.delete(name)
-        })
-      ).then(() => self.clients.claim())
-    )
-  });
+        caches.keys().then(cacheNames=>{
+          return Promise.all(
+            cacheNames.map(function(cacheName) {
+              if (cacheName !== PRECACHE) {
+                return caches.delete(cacheName);
+              }
+            })
+      )}).then(() => self.clients.claim())
+   )
+  })
   
   
   self.addEventListener('fetch', e => {
