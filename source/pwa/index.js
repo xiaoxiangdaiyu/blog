@@ -1,19 +1,3 @@
-function getImg(src) {
-    return new Promise(function (resolve, reject) {
-        var request = new XMLHttpRequest()
-        request.open('GET', src)
-        request.responseType = 'blob'
-        request.onload = function () {
-            if (request.status == 200) {
-                var imgRes = request.response;
-                resolve(imgRes)
-            } else {
-                reject(Error('Image didn\'t load successfully; error code:' + request.statusText));
-
-            }
-        }
-    })
-}
 function registerServiceWorker(){
     // 注册service worker
     return navigator.serviceWorker.register('./sw1.js').then(registration => {

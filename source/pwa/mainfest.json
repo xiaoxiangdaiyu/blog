@@ -1,21 +1,18 @@
 {
-    "name": "PQJ-PWA",
-    "short_name":"PQJ",
-    "description": "测试demo",
-    "start_url": "/index.html",
-    "icons": {
-      "128": "./asset/sw.jpg"
-    },
-    "developer": {
-      "name": "pqj",
-      "url": ""
-    },
-    "display": "standalone",
-    "background_color": "#287fc5",
-    "theme_color": "#fff",
-    "permissions": {
-        "desktop-notification": {
-          "description": "Needed for creating system notifications."
-        }
-      }
+  "name": "PWA",
+  "short_name": "PWA",
+  "description": "测试demo",
+  "icons": [{
+      "src": "https://h5.sinaimg.cn/upload/696/2017/08/23/weibologo.png",
+      "sizes": "606x606",
+      "type": "image/png"
+    }],
+  "start_url": "/pwa/demo.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F3F3F3",
+  "theme_color": "#F3F3F3",
+  "related_applications": [],
+  "prefer_related_applications": false
 }
