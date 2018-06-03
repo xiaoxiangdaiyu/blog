@@ -9,15 +9,14 @@ tags:
 ## 抽象语法树（AST）
 
 Babel 使用一个基于 ESTree 并修改过的 AST，它的内核说明文档可以在[这里](https://github. com/babel/babel/blob/master/doc/ast/spec. md)找到。
-直接看实例应该更清晰：  
+直接看实例应该更清晰:   
 
-```js 
+```js  
 function square(n) {
   return n * n;
-}
-```  
-  
-对应的AST对象(babel提供的对象格式)：  
+} 
+```
+对应的AST对象(babel提供的对象格式):   
 
 ```js
 {
@@ -73,8 +72,8 @@ Babel 的三个主要处理步骤分别是： 解析（parse），转换（trans
 
 ## 转换 
 ### Visitor
-转换的时候，是插件开始起作用的时候，但是如何进入到这个过程呢，babel给我们提供了一个Visitor的规范。我们可以通过Visitor来定义我们的访问逻辑。大概就是下面这个样子。  
-  
+转换的时候，是插件开始起作用的时候，但是如何进入到这个过程呢，babel给我们提供了一个Visitor的规范。我们可以通过Visitor来定义我们的访问逻辑。大概就是下面这个样子。   
+
 ```js
 const MyVisitor = {
   //这里对应上面node的type，所有type为Identifier的节点都会进入该方法中
@@ -96,10 +95,9 @@ Called!
 Called!
 Called!
 Called!
-```     
-
+```
 因为深度优先的遍历算法，到一个叶子节点之后，发现没有子孙节点，需要向上溯源才能回到上一级继续遍历下个子节点，所以每个节点都会被访问两次。  
-如果不指定的话，调用都发生在进入节点时，当然也可以在退出时调用访问者方法。
+如果不指定的话，调用都发生在进入节点时，当然也可以在退出时调用访问者方法  
 
 ```js   
 const MyVisitor = {
@@ -115,14 +113,13 @@ const MyVisitor = {
 ```
 此外还有一些小技巧：  
 
-可以在方法名用|来匹配多种不同的type，使用相同的处理函数。    
+可以在方法名用|来匹配多种不同的type，使用相同的处理函数。  
 
 ```js
 const MyVisitor = {
   "ExportNamedDeclaration|Flow"(path) {}
 };
 ```
-
 此外可以在访问者中使用别名(如babel-types定义)
 例如Function是FunctionDeclaration，FunctionExpression，ArrowFunctionExpression，ObjectMethod和ObjectMethod的别名,可以用它来匹配上述所有类型的type  
 
@@ -134,8 +131,7 @@ const MyVisitor = {
 ### Paths
 AST 通常会有许多节点，那么节点直接如何相互关联呢？ 我们可以使用一个可操作和访问的巨大可变对象表示节点之间的关联关系，或者也可以用Paths（路径）来简化这件事情。Path 是表示两个节点之间连接的对象。直接看例子比较清晰一点。  
 
-```js  
-
+```js
 {
   type: "FunctionDeclaration",
   id: {
@@ -144,10 +140,7 @@ AST 通常会有许多节点，那么节点直接如何相互关联呢？ 我们
   },
   ...
 }
-
-
 ```
-
 将子节点 Identifier 表示为一个路径（Path）的话，看起来是这样的：  
 
 ```js
@@ -162,8 +155,7 @@ AST 通常会有许多节点，那么节点直接如何相互关联呢？ 我们
     "name": "square"
   }
 }
-```  
-
+```
 当你通过一个 Identifier() 成员方法的访问者时，你实际上是在访问路径而非节点。 通过这种方式，你操作的就是节点的响应式表示（译注：即路径）而非节点本身。  
 
 ## 编写插件
@@ -191,7 +183,7 @@ var fuc = (b)=>{
 var fuc = function (b) {
     console.log(b);
 };
-```   
+```
 ### 源文件语法树   
  
 这里分析下这个简单的函数声明，按照上面定义分析，不过这里还是推荐[AST Explorer ](http://astexplorer.net/#/Z1exs6BWMq)可以清晰的看到我们的语法树。这里只截取有用信息：  
@@ -223,8 +215,7 @@ const visitor = {
        //这里就可以访问到箭头函数的node
     }
 }   
-```    
-
+```
 ### 目标文件语法树   
   
 同样的方法，语法树对象如下：  
@@ -246,7 +237,7 @@ const visitor = {
               "body": {
               }  
         ]
-```   
+```
 经过对比，差别就在于init的type改变，其他都没有变化。那么我们visitor里面的逻辑就明了了。我们需要将ArrowFunctionExpression替换为FunctionExpression，其他的内容都使用原数据即可。  
 如何进行转换呢，babel-types除了规范不同节点结构之外，提供了一个t.replaceWith(targetObj)的方法供我们进行替换，我们只需要构造一个FunctionExpression类型的node节点即可。  
   
