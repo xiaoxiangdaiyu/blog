@@ -1,8 +1,7 @@
 ---
-title: 滚动边界
-date: 2018-05-15
+title: 谈橡皮筋特效的解决方案
+date: 2018-08-25
 ---
-## 阻止页面橡皮筋滑动的解决方案
 ### 前言  
 本文翻自[Scroll Bouncing On Your Websites](https://www.smashingmagazine.com/2018/08/scroll-bouncing-websites/)，拜读之后收获颇多，结合自己的理解，将该文章翻成中文，一方面加深理解另一方面好文共享。
   <!--more  -->
@@ -48,8 +47,7 @@ According to the CSS 2.1 Specification, when a “box” (in this case, the dark
     <footer>
     </footer>
 </body>    
-``` 
-
+```
 ## 只用css、html来解决   
 
 ### 一、绝对定位以及相对定位的方式   
@@ -135,7 +133,7 @@ footer {
   width: 100%;
 }
 
-```  
+```
 这里设置html，body均为fixed、overflow: hidden。footer同样为fixed。  
 在需要滚动的body-container内容区域设置其高度为100vh-footer的高度，  
 同时增加-webkit-overflow-scrolling: touch;开启阻尼滑动支持。   
