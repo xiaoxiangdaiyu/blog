@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>
+        自定义事件
+    </title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="react.js, react, component, components, ui, framework">
+</head>
+
+<body>
+    <div>一本书的价格：<input type='text' id='el' value=10 /></div>
+    <div>5本书的价格：<span id='el2'>50</span>元</div>
+</body>
+<script>
+    // 事件系统
+    class Event1 {
+        constructor() {
+            // 事件队列
+            this._events = {}
+        }
+        // type对应事件名称，call回调
+        on(type, call) {
+            let funs = this._events[type]
+            // 首次直接赋值，同种类型事件可能多个回调所以数组
+            // 否则push进入队列即可
+            if (funs) {
+                funs.push(call)
+            } else {
+                this._events.type = []
+                this._events.type.push(call)
+            }
+        }
+        // 触发事件
+        trigger(type) {
+            let funs = this._events.type,
+                [first, ...other] = Array.from(arguments)
+            //对应事件类型存在，循环执行回调队列  
+            if (funs) {
+                let i = 0,
+                    j = funs.length;
+                for (i = 0; i < j; i++) {
+                    let cb = funs[i];
+                    cb.apply(this, other);
+                }
+            }
+        }
+        // 取消绑定，还是循环
+        off(type, func) {
+            let funs = this._events.type
+            if (funs) {
+                let i = 0,
+                    j = funs.length;
+                for (i = 0; i < j; i++) {
+                    let cb = funs[i];
+                    if (cb === func) {
+                        funs.splice(i, 1);
+                        return;
+                    }
+                }
+            }
+            return this
+        }
+    }
+    const count = document.querySelector('#el'),
+        total1 = document.querySelector('#el2');
+    const event1 = new Event1()
+    const eventAwesome = new CustomEvent('priceChange', {
+        bubbles: true,
+        detail: { getprice: () => count.value }
+    });
+    event1.on('priceChange', function (e) {
+        var price = count.value || 0
+        total1.innerHTML = 5 * price
+    })
+    el.addEventListener('change', function (e) {
+        var val = e.target.value
+        event1.trigger('priceChange')
+    });
+    /*************自定义浏览器事件系统分割线  *************/
+    const eventAwesome = new CustomEvent('priceChange', {
+        bubbles: true,
+        detail: { getprice: () => count.value }
+    });
+    // document.addEventListener('priceChange', function (e) {
+    //     var price = e.detail.getprice() || 0
+    //     total1.innerHTML=5 * price
+    //   })
+    // el.addEventListener('change', function (e) {
+    //   var val = e.target.value
+    //   e.target.dispatchEvent(eventAwesome)
+    // });
+</script>
+<script>
+    // 双向绑定
+    // let data = {
+    //     price: 5,
+    //     count: 2
+    // },
+    //     callb = null
+
+    // class Events {
+    //     constructor() {
+    //         this._events = []
+    //     }
+    //     on() {
+    //         if (callb && !this._events.includes(callb)) {
+    //             this._events.push(callb)
+    //         }
+    //     }
+    //     triger() {
+    //         this._events.forEach((callb) => {
+    //             callb && callb()
+    //         })
+    //     }
+    // }
+
+    // Object.keys(data).forEach((key) => {
+    //     let initVlue = data[key]
+    //     const e1 = new Events()
+    //     Object.defineProperty(data, key, {
+    //         get() {
+    //             //内部判断是否需要注册
+    //             e1.on()
+    //             // 执行过置否
+    //             callb = null
+    //             // get不变更值
+    //             return initVlue
+    //         },
+    //         set(newVal) {
+    //             initVlue = newVal
+    //             // set操作触发事件，同步数据变动
+    //             e1.triger()
+    //         }
+    //     })
+    // })
+    // function watcher(func) {
+    //     // 参数赋予callback，执行时触发get方法，进行监听事件注册
+    //     callb = func
+    //     // 初次执行时，获取对应值自然经过get方法注册事件
+    //     callb()
+    //     // 置否避免重复注册
+    //     callb = null
+    // }
+    // // 此处指定事件触发回调，注册监听事件
+    // watcher(() => {
+    //     data.total = data.price * data.count
+    // })
+</script>
+
+</html>
