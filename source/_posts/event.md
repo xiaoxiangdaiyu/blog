@@ -95,8 +95,9 @@ html结构比较简单
 <div >一本书的价格：<input type='text' id='el' value=10 /></div>
 <div >5本书的价格：<span id='el2'>50</span>元</div>
 ```
-当改变input值得时候，效果如下：
-<img src='https://p1.meituan.net/dpnewvc/5a5d14a552d668507c41463e5c865c347690486.gif'/>
+当改变input值得时候，效果如下[demo地址](http://xxdy.tech/event/index.html) ：
+<img src='https://p1.meituan.net/dpnewvc/5a5d14a552d668507c41463e5c865c347690486.gif'/>  
+   
 
 大概思路捋一下：
 1、自定义事件，priceChange，用来监听改变price的改变
@@ -365,4 +366,6 @@ let data = {
 #### 参考文章
 [vue数据响应的实现](https://medium.com/vue-mastery/the-best-explanation-of-javascript-reactivity-fea6112dd80d)  
 [Creating and triggering events](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Creating_and_triggering_events)  
-看到知识盲点，就需要立即行动，不然下次还是盲点。正好是事件相关，就一并总结了下发布订阅相关进而到了数据响应的实现。个人的一点心得记录，分享出来希望共同学习和进步。[更多请移步我的博客](https://github.com/xiaoxiangdaiyu/blog)
+看到知识盲点，就需要立即行动，不然下次还是盲点。正好是事件相关，就一并总结了下发布订阅相关进而到了数据响应的实现。个人的一点心得记录，分享出来希望共同学习和进步。[更多请移步我的博客](https://github.com/xiaoxiangdaiyu/blog)  
+[demo地址](http://xxdy.tech/event/index.html)  
+[源码地址](https://github.com/xiaoxiangdaiyu/blog/blob/master/source/event/index.html)

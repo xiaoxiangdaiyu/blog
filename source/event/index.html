@@ -81,10 +81,6 @@
         event1.trigger('priceChange')
     });
     /*************自定义浏览器事件系统分割线  *************/
-    const eventAwesome = new CustomEvent('priceChange', {
-        bubbles: true,
-        detail: { getprice: () => count.value }
-    });
     // document.addEventListener('priceChange', function (e) {
     //     var price = e.detail.getprice() || 0
     //     total1.innerHTML=5 * price
