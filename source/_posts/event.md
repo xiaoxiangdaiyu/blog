@@ -1,10 +1,11 @@
 ---
-title: 由自定义事件到双向绑定
+title: 由自定义事件到vue数据响应
 date: 2018-08-25 08:00:29
 tags:
 ---
+
 ## 前言  
-除了大家经常提到的自定义事件之外，浏览器本身也支持我们自定义事件，我们常说的自定义事件一般也都是用于项目中的一些通知机制，例如双向绑定。一起看一下如何实现自定义事件，以及基于观察者模式的双向绑定的基本原理。
+除了大家经常提到的自定义事件之外，浏览器本身也支持我们自定义事件，我们常说的自定义事件一般用于项目中的一些通知机制。最近正好看到了这部分，就一起看了下自定义事件不同的实现，以及vue数据响应的基本原理。
 <!-- more -->
 ## 浏览器自定义事件
 ### 定义  
@@ -18,7 +19,7 @@ var event = new Event('test')
 var event = new CustomEvent('test', { 'detail': elem.dataset.time });
 ```
 大多数现代浏览器对new Event/CustomEvent 的支持还算可以（IE除外），可以看下具体情况：
-<img src='https://p1.meituan.net/dpnewvc/f85dbad9ff379e936ef42744f4b73266184137.png'/>
+<img src='https://user-gold-cdn.xitu.io/2018/8/25/16571803c3080b60?w=2554&h=1016&f=png&s=135371'/>
 可以放心大胆的使用，如果非要兼容IE那么有下面的方式
 
 ```js
@@ -96,8 +97,7 @@ html结构比较简单
 <div >5本书的价格：<span id='el2'>50</span>元</div>
 ```
 当改变input值得时候，效果如下[demo地址](http://xxdy.tech/event/index.html) ：
-<img src='https://p1.meituan.net/dpnewvc/5a5d14a552d668507c41463e5c865c347690486.gif'/>  
-   
+<img src='https://user-gold-cdn.xitu.io/2018/8/25/165718064234986c?w=600&h=185&f=gif&s=7690486'/>
 
 大概思路捋一下：
 1、自定义事件，priceChange，用来监听改变price的改变
@@ -121,8 +121,8 @@ html结构比较简单
     e.target.dispatchEvent(eventAwesome)
   });
 ```
-代码确实比较简单，当然实现的方式是多样的。但是看起来是不是有点双向绑定的味道。  
-确实目前大多数框架中都会用到发布订阅的方式来处理数据的变化。例如vue中的双向绑定，react中的setState等，以vue为例子，我们可以来看看其双向绑定实现原理。  
+代码确实比较简单，当然实现的方式是多样的。但是看起来是不是有点vue数据响应的味道。  
+确实目前大多数框架中都会用到发布订阅的方式来处理数据的变化。例如vue，react等，以vue为例子，我们可以来看看其数据响应的基本原理。  
 ## 自定义事件
 这里的自定义事件就是前面提到的第二层定义了，非基于浏览器的事件。这种事件也正是大型前端项目中常用到。对照原生事件，应该具有on、trigger、off三个方法。分别看一下
 1. 对照原生事件很容易理解，绑定一个事件，应该有对应方法名和回调,当然还有一个事件队列
@@ -205,12 +205,12 @@ html不变，绑定和触发事件的方式改变一下就好
     event1.trigger('priceChange')
   });
 ```
-这样同样可以实现上面的效果，实现了事件系统之后，我们接着实现一下vue里面的双向绑定。
-### 双向绑定  
-说到vue的双向绑定，网上相关文章简直太多了，这里就不深入去讨论了。简单搬运一下基本概念。详细的话大家可以自行搜索。  
+这样同样可以实现上面的效果，实现了事件系统之后，我们接着实现一下vue里面的数据响应。
+### vue的数据响应  
+说到vue的数据响应，网上相关文章简直太多了，这里就不深入去讨论了。简单搬运一下基本概念。详细的话大家可以自行搜索。  
 ### 基本原理
 直接看图比较直观：
-<img src='https://p0.ssl.qhimg.com/t0166c573c58763fc45.png'/>
+<img src='https://user-gold-cdn.xitu.io/2018/8/25/165718027cb03c89?w=800&h=500&f=png&s=64811'/>
 就是通过观察者模式来实现，不过其通过数据劫持方式实现的更加巧妙。  
 数据劫持是通过Object.defineProperty()来监听各个属性的变化，从而进行一些额外操作。
 举个简单例子：  
@@ -305,7 +305,9 @@ function watcher(func) {
     data.total = data.price * data.count
   })
 ```
-这样就保证了会将监听事件挂载上去。到这里，乞丐版双向绑定应该就能跑了。可以将下面的完整代码放到console台跑跑看。   
+这样就保证了会将监听事件挂载上去。到这里，乞丐版数据响应应该就能跑了。   
+再加上dom事件的处理，双向绑定也不难实现。
+可以将下面的完整代码放到console台跑跑看。   
 
 ```js
 let data = {
@@ -367,5 +369,5 @@ let data = {
 [vue数据响应的实现](https://medium.com/vue-mastery/the-best-explanation-of-javascript-reactivity-fea6112dd80d)  
 [Creating and triggering events](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Creating_and_triggering_events)  
 看到知识盲点，就需要立即行动，不然下次还是盲点。正好是事件相关，就一并总结了下发布订阅相关进而到了数据响应的实现。个人的一点心得记录，分享出来希望共同学习和进步。[更多请移步我的博客](https://github.com/xiaoxiangdaiyu/blog)  
-[demo地址](http://xxdy.tech/event/index.html)  
+[demo地址](http://localhost:4000/event/index.html)  
 [源码地址](https://github.com/xiaoxiangdaiyu/blog/blob/master/source/event/index.html)
