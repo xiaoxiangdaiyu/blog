@@ -369,5 +369,5 @@ let data = {
 [vue数据响应的实现](https://medium.com/vue-mastery/the-best-explanation-of-javascript-reactivity-fea6112dd80d)  
 [Creating and triggering events](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Creating_and_triggering_events)  
 看到知识盲点，就需要立即行动，不然下次还是盲点。正好是事件相关，就一并总结了下发布订阅相关进而到了数据响应的实现。个人的一点心得记录，分享出来希望共同学习和进步。[更多请移步我的博客](https://github.com/xiaoxiangdaiyu/blog)  
-[demo地址](http://localhost:4000/event/index.html)  
+[demo地址](http://xxdy.tech/event/index.html)  
 [源码地址](https://github.com/xiaoxiangdaiyu/blog/blob/master/source/event/index.html)
