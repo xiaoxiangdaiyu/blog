@@ -392,6 +392,29 @@ const result = babel.transform(code, {
 console.log(result.code);  
 ```     
 
+### 更新说明
+对于构造新的语法内容时，除了上面使用t.VariableDeclaration这种费劲的表达式之外可以借助babel-template实现。
+用法参考
+```js
+const buildRequire = template(`
+  var IMPORT_NAME = require(SOURCE);
+`);
+
+const ast = buildRequire({
+  IMPORT_NAME: t.identifier("myModule"),
+  SOURCE: t.stringLiteral("my-module"),
+});
+```
+新版本可 使用replaceWithSourceString
+
+```js
+FunctionDeclaration(path) {
+  path.replaceWithSourceString(`function add(a, b) {
+    return a + b;
+  }`);
+}
+```
+
 ## 结束语  
 ### 参考文章   
 [Babel 插件手册](https://github.com/jamiebuilds/babel-handbook/blob/master/translations/zh-Hans/plugin-handbook.md#toc-replacing-a-node)   

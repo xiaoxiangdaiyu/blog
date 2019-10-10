@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>
+        自定义属性换肤
+    </title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="react.js, react, component, components, ui, framework">
+</head>
+
+<body>
+    <button id='j_click'>点击切换主题色</button>
+    <div>字体颜色改变</div>
+</body>
+<script>
+    var btn = document.querySelecter('#js_click'),
+        dataMap = ['green','blue'],
+        index=0,
+        root = document.querySelector('body')
+    function count(){
+        if(index>2){
+            index++
+        }else{
+            index = 0
+        }
+    }    
+    function handleTheme(){
+        count()
+        var clolr_Theme = dataMap[index]
+        
+    }
+    btn.addEventListener('click',()=>{
+        handleTheme()
+    })
+    
+</script>
+<script>
+    // 双向绑定
+    // let data = {
+    //     price: 5,
+    //     count: 2
+    // },
+    //     callb = null
+
+    // class Events {
+    //     constructor() {
+    //         this._events = []
+    //     }
+    //     on() {
+    //         if (callb && !this._events.includes(callb)) {
+    //             this._events.push(callb)
+    //         }
+    //     }
+    //     triger() {
+    //         this._events.forEach((callb) => {
+    //             callb && callb()
+    //         })
+    //     }
+    // }
+
+    // Object.keys(data).forEach((key) => {
+    //     let initVlue = data[key]
+    //     const e1 = new Events()
+    //     Object.defineProperty(data, key, {
+    //         get() {
+    //             //内部判断是否需要注册
+    //             e1.on()
+    //             // 执行过置否
+    //             callb = null
+    //             // get不变更值
+    //             return initVlue
+    //         },
+    //         set(newVal) {
+    //             initVlue = newVal
+    //             // set操作触发事件，同步数据变动
+    //             e1.triger()
+    //         }
+    //     })
+    // })
+    // function watcher(func) {
+    //     // 参数赋予callback，执行时触发get方法，进行监听事件注册
+    //     callb = func
+    //     // 初次执行时，获取对应值自然经过get方法注册事件
+    //     callb()
+    //     // 置否避免重复注册
+    //     callb = null
+    // }
+    // // 此处指定事件触发回调，注册监听事件
+    // watcher(() => {
+    //     data.total = data.price * data.count
+    // })
+</script>
+
+</html>
