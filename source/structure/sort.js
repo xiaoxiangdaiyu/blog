@@ -109,6 +109,8 @@ function mergeSort(arrs= arr){
 }
 function merge(left,right){
     var temp = []
+    // 对于2的元素比较最为清晰，进行排序的步骤，此时left分别已经是有序
+    // 依次挨个对比，小的入栈，大的留下来，直到比完
     while(left.length && right.length){
         if(left[0] < right[0]){
             temp.push(left.shift())
@@ -116,6 +118,7 @@ function merge(left,right){
             temp.push(right.shift())
         }
     }
+    // 剩下的，left肯定大于right
     // 顺序已经固定，依次插入即可
     while(left.length){
         temp.push(left.shift())
@@ -170,3 +173,39 @@ function quickSort(arr,start,end){
     return arr;
 }
 quickSort(arr,0,9)
+
+
+
+/**
+ * 二分搜索 
+ * */ 
+
+function binarySearch(item){
+    var arr = [1,2,3,4,11,34,55,77,88,99,100]
+    console.log('已排序数组>>',arr)
+    var len = arr.length,
+        left=0,
+        right = len-1,
+        midIndex 
+    // 选中间，作为比较标准，判断是否到首尾 
+    while(left<=right){
+        // 中间位置选取
+        midIndex = Math.floor((left+right) / 2)
+        var midItem = arr[midIndex]
+        if (midItem == item){
+            console.log('最终位置》》', midItem)
+            return minIndex
+        }
+        // 左边
+        if(midItem > item){
+            // 取之前元素
+            right = midIndex -1    
+        }
+        if(midItem<item){
+            left = left+1
+        }
+        console.log('中间位置》》', midItem)
+    }
+    console.log('最终位置》》', -1)   
+    return -1  
+} 
