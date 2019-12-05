@@ -283,8 +283,18 @@ function get1Num(arr) {
  * 出现两次的相同值肯定在一起，单次的值肯定分开，这样达到目的了，分别异或就可以了
  * 题目变形：给你1-1000个连续自然数,然后从中随机去掉两个,再打乱顺序,要求只遍历一次,求出被去掉数
  * 将连续自然数跟打乱之后的合并就是 单次多次的问题了。
- * 
- */
+ * 右移就是降低一个进制即 除以2，取整，例如3 右移一位为1 。
+ * 左移即乘以2 例如 1=》2 
+ * 这里回顾下js的取整方法： 
+ * Math.ceil() 向上取整，即进一位，ceil 有天花板的意思，很好理解了
+ * Math.floor() 向下取整，floor有地板的意思
+ * Math.round() 四舍五入，round有圆环的意思，专指四舍五入
+ * parseInt() 这个同floor
+ * parseInt(2.2) // 2
+ * Math.floor(2.2) //2
+ * Math.ceil(2.2) // 3
+ * Math.round(2.2) // 2
+ **/
 
 function getTwo(arr){
     var val=0,
@@ -313,3 +323,51 @@ function getTwo(arr){
     })
     console.log('x,y>>',result1,result2)
 }
+
+
+
+/**
+ * 把只包含质因子2、3和5的数称作丑数（Ugly Number）。
+ * 例如6、8都是丑数，但14不是，因为它包含质因子7。
+ * 习惯上我们把1当做是第一个丑数。求按从小到大的顺序的第N个丑数。
+ *  思路：
+ * 首先查找丑数规律： 丑数只能被2、3、5整除，说明第n个丑数只能是0 - n-1中某个丑数✖️2、✖️3、✖️5的结果。
+ * 而且，这个数即第0 - n-1个丑数✖️2、✖️3、✖️5的结果中比第n-1个丑数大的最小值。结果可能有很多，需要排序。
+ * 按照上面的规律，我们可以依次求出第0 - n个丑数。
+ * 
+ * 基本思路：
+ * 0-n-1 的丑数队列，因为已知因为第一个丑数知道，所以可以一直推下去。
+ * 然后分别*2 *3，* 5 ，比较大于n-1 丑数最小值
+ * 可以优化：
+ * 有些值，确实很小，没必要每次都乘，记录下本次，*2 * 3 * 5 刚好大于n-1 丑数的值即可，下次从其开始循环。
+ * 
+ */
+  
+ function getUglyNumber(n){
+    //  记录位置标识
+    var i = j = k = 0,
+        // 初始数组就是1
+        arr = [1]
+    // 0 直接返回    
+    if(n == 0){
+        return arr[0]
+    }
+    // 获取丑数队列
+    while(arr.length <= n){
+        // next 丑数
+        arr.push(Math.min(arr[i]*2,arr[j]*3,arr[k]*5))
+        var currentItem = arr[arr.length - 1]
+        // 获取下次下标 n-1
+        while (arr[i] * 2 <= currentItem){
+            i++
+        }
+        while (arr[j] * 3 <= currentItem) {
+            j++
+        }
+        while (arr[k] * 5 <= currentItem) {
+            k++
+        }
+    }
+    console.log(arr[n])
+    return arr[n]
+ }
