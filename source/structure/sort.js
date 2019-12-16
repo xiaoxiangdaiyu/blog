@@ -209,3 +209,31 @@ function binarySearch(item){
     console.log('最终位置》》', -1)   
     return -1  
 } 
+
+
+
+
+function getTotal(n){
+    var current = heigh = low = level = 0
+    // 位数下标
+    var i = 0
+    // 数字位数
+    var len = n.toString().length
+    // 总数
+    var total = 0
+    for(i;i<len;i++){
+        level = Math.pow(10,i)
+        // 注意这里获取当前位置的value
+        heigh = Math.floor(n/(10*level))%10
+        current = n % (10 * level)
+        low = n % (level)
+        if(current == 0){
+            total += heigh*level
+        }else if(current == 1){
+            total += heigh*level + low+1
+        }else{
+            total += (heigh+1)*level
+        }
+    }
+    return total
+}
