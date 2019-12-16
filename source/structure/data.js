@@ -371,3 +371,80 @@ function getTwo(arr){
     console.log(arr[n])
     return arr[n]
  }
+
+
+
+ /**
+  * 数值的整数次方
+  * 给定一个double类型的浮点数base和int类型的整数exponent。求base的exponent次方。
+  * 这道题逻辑上很简单，但很容易出错。
+  * 关键是要考虑全面，考虑到所有情况。
+  * exponent 是正，负，0的情况
+  * base为0的情况
+  * Math.abs（） absolute value 就是绝对值的意思，防抱死也有点意味，绝对可用
+  * */  
+function getPow(base, exponent){
+    if (exponent !== +exponent){
+        throw Error('必须为数字')
+    }
+    if (exponent == 0){
+        return 1
+    }
+    if(exponent > 1){
+        var result = base
+        for(var i =1;i<exponent;i++){
+            result *= base
+        }
+        return result
+    }
+    var num = Math.abs(exponent)
+    for (var i = 1; i < exponent; i++) {
+        result *= base
+    }
+    return result?1/result:false
+} 
+
+
+/**
+ * 求出1~13的整数中1出现的次数,并算出100~1300的整数中1出现的次数？
+ * 为此他特别数了一下1~13中包含1的数字有1、10、11、12、13因此共出现6次,但是对于后面问题他就没辙了。
+ * ACMer希望你们帮帮他,并把问题更加普遍化,可以很快的求出任意非负整数区间中1出现的次数（从1到n中1出现的次数）。
+ */
+/**
+ * 既然计算位数，11可以算为两次，就要逐位分析，先从两位来判断
+ * 分别计算，个位为1和十位为1 的情况，两者相加即为结果。
+ * 需要判断数字，0、1、2关系有所不同，主要体现在对其后位数的限制
+ * 0的话，后面位数可以不考虑，因为当前位不会位一，后面多大都不存在组合可能
+ * 1的话，后面位数的大小要考虑，因为有部分值不能取到，例如13，那么14、15的情况不能取到，只能是3+1 ，有0
+ * 2的话，就所有情况都满足了，完全根据前面值的决定，例如22，那么可以有(2+1)+(0+1)*10 = 13
+ * 即下面这个情况：abcde，分析百位数字c
+ * c = 0 : 有 ab*100 种情况
+ * c = 1 : 有 ab*100 + de + 1 种情况
+ * c > 2 : 有 (ab+1) * 100 种情况
+ * 举个例子：
+ * 210 
+ * 个位为1： 21
+ * 十位为1： 2*10+1
+ * 百位为1： (0+1)*100
+ * */ 
+function getTotalNum(n){
+    let count = 0;
+    let i = 1;
+    let high = low = current = level = 0;
+    let length = n.toString().length;
+    while (i <= length) {
+        level = Math.pow(10, i - 1); //第i位数位于什么量级 1 10 100 ...
+        high = parseInt(n / (level * 10));
+        low = n % level;
+        current = parseInt(n / level) % 10;
+        if (current === 0) {
+            count += (high * level);
+        } else if (current === 1) {
+            count += (high * level + low + 1);
+        } else {
+            count += ((high + 1) * level);
+        }
+        i++;
+    }
+    return count;
+} 
