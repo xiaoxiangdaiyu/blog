@@ -1,33 +1,137 @@
 ---
-title: 仓库管理模式
+title: 由monorepo说开去
 date: 2019-12-30 08:00:29
 tags: 前端 工程结构
 ---
-## 前言 
+
+## 前言
+随着功能和业务量级的飙升，前端代码量级也越来越大，再加上后续管理运维，代码仓库的运营管理挑战也浮出水面。主流方案有两种：一是multirepo式的分散式的独立仓库，二是monorepo式的集中管理，各有千秋，下面就结合实际场景一起深入了解下。
+<!-- more -->
+## 分散式管理-multirepo
+即按照功能或者其他维度，将项目拆分为不同模块单独维护于各自仓库中。
+
+### 使用场景
+对于敏捷迭代快速开发的新需求，常规做法就是每个模块对应一个仓库，新的需求进行归类，可归入已有仓库则进行迭代，不满足则新建仓库。
+
+### 优势
+#### 1.灵活
+不同模块独立维护，与其他模块天然隔离。各个模块可以选择适合自己的风格、工具等。
+
+#### 2.安全
+得益于模块的拆分，权限控制较为自然。  
+开发时只关注相关部分，不会误操作其他内容。
+发布上线，对其他模块无感知。
+
+### 问题
+作为传统的管理组织方式，发展演进这么久，必然会存在一些限制。突出体现在协作和管理成本上。  
+
+#### 1. 管理成本
+常见的项目交接时，每个人都负责了一堆项目、账号等，只能手动梳理，还存在漏掉的可能。我当初经历过几次大的调整，交接的真是一脸懵逼和心痛。来个需求才发现还有个仓库一直处于遗忘的角落。
+
+#### 2. 协作成本
+涉及多个项目开发时，本地开发需要打开多个IDE在其中切换。  
+对于本地调试等也是个繁琐的过程，虽然存在npm link等方式。
+
+#### 3. 依赖升级
+这种场景一般出现在依赖的核心模块上，特别是自行开发的基础依赖，不得不升级时简直一言难尽，数目直逼上百的项目，每个都要修改发布一次。
+
+上面说的是业务模块，对于开源或者公司内部基础性工具，升级这里的问题更显著一些。对于程序员俩说，出现问题解决问题就是，因此集中式的管理模式就出现了。
+
+## 集中式管理monorepo
+monorepo 的核心观点是所有的项目在一个代码仓库中。严格的统一和收归，以利于统一的升级和管理。
+不过这并不是说代码没有组织的随意存放。相反，在文件目录上体现出管理结构的要求更高，否则可维护性更低。
+例如Babel，每个模块都在指定的packages目录下。
+### 优势
+既然是基于问题的演进，其实优势比较明显，就是multirepo的局限的解决。
+例如协作、运营管理等成本降低。  
+不过monorepo也不全是益处，相反其局限也比较明显。
+### 问题 
+
+#### 1. 项目体积增加
+随着项目的发展，体积会逐渐增大，甚至成为巨无霸项目体积几个G。
+自然带来一些问题：
+
+* 拉取时间边长
+  拿babel举个例子，虽然只有130M，但时间已经增加不少，更遑论上G的存在。![Jietu20191231-094925-HD](media/15771585486438/Jietu20191231-094925-HD.gif)
+
+* 编译时间很慢
+  很自然，如果每次还是全部编译的话，开发、部署时的等待时间会相当的长
+
+  
+#### 2. 安全性
+全部功能就这样暴露在所有开发者面前，安全性是个大问题。  
+误操作的可能性，如果仅仅寄希望于开发者素质和codereview时的人工复检是不可靠的。
+ 
+### 解决方案
+当然对于比较成熟的模式，解决方案也是形成了沉淀的。
+ 
+#### 1. 多模块管理工具
+针对复杂的项目模块，自然需要有贴合实际的管理工具。  
+例如[lerna](https://github.com/lerna/lerna)，自我定位就是:  
+A tool for managing JavaScript projects with multiple packages
+至于详细用法，大家可以通过官网查看。
+
+#### 2. git稀疏检出 
+
+针对开发者只关注相应内容的解决方案可以依托git来实现的。
+Git在1.7版本后，已经支持只Checkout部分内容，即稀疏检出(sparse checkout)
+ 
+稀疏检出就是本地版本库检出时不检出全部，只将指定的文件从本地版本库检出到工作区，而其他未指定的文件则不予检出（即使这些文件存在于工作区，其修改也会被忽略）。 
+
+也就是我们可以在工作区只关注相关的模块，虽然文件全部pull了下来，但展示和管理式会忽略其他文件，即使展示了其他文件并进行了修改，修改依然会被忽略。
+例如babel中我们只展示 babel-cli 内容部分，操作如下：
+
+```bash
+// 创建文件夹
+mkdir demo && cd demo
+// 初始化git 
+git init
+git remote add origin https://github.com/babel/babel.git
+// 打开 开关 
+git config core.sparsecheckout true
+// 指定目录
+echo "packages/babel-cli/" >> .git/info/sparse-checkout
+// 获取代码
+git pull origin master
+```  
+这样，我们ls可以查看到文件内容只有：
+
+```bash
+packages/babel-cli
+```
+
+如果需要修改展示目录，直接修改.git/info/sparse-checkout，即可，然后重新进行checkout 
+ 
+```bash
+echo "packages/babel-cli/" >> .git/info/sparse-checkout
+git checkout master
+```
+这样增加了安全性。
+
+#### 扩展-浅克隆
+
+稀疏检出只是展示上的部分，本身仍然包含所有的文件和历史。如果只关注最近的提交，可以通过浅克隆实现。
+使用：
+```js
+git clone --depth 2 https://github.com/babel/babel.git
+```
+
+不过浅克隆限制较多，一般用于对远程版本库的查看和研究。
+
+* 不能从浅克隆版本库克隆出新的版本库。
+* 其他版本库不能从浅克隆获取提交。
+* 其他版本库不能推送提交到浅克隆版本库。
+* 不要从浅克隆版本库推送提交至其他版本库，除非确认推送的目标版本库包含浅克隆版本库中缺失的全部历史提交，否则会造成目标版本库包含不完整的提交历史导致版本库无法操作。
+* 在浅克隆版本库中执行合并操作时，如果所合并的提交出现在浅克隆历史中，则可以顺利合并，否则会出现大量的冲突，就好像和无关的历史进行合并一样。
 
 
-# 引言
+## 结束语
+本文简单介绍了不同的仓库管理模式理念和一些实践方式，个人理解有限，抛砖引玉，欢迎一起讨论。更多内容请转[雨打梨梦三村边](http://xxdy.tech/)，同时感谢以下参考文章。。
 
-### 参考
-
-Git sparse-checkout 检出指定目录或文件
-
-https://www.cnblogs.com/pekkle/p/9742393.html 
-
-REPO 风格之争：MONO VS MULTI
-https://zhuanlan.zhihu.com/p/31289463
-
-mono最佳实践 NodeJS：Lerna —— Monorepo 的最佳实践
+### 参考文章
+* [https://www.kloia.com/blog/monorepo-or-multirepo](https://www.kloia.com/blog/monorepo-or-multirepo)
+* [https://www.worldhello.net/gotgit/08-git-misc/090-sparse-checkout-and-shallow-clone.html](https://www.worldhello.net/gotgit/08-git-misc/090-sparse-checkout-and-shallow-clone.html)  
+* [https://zhuanlan.zhihu.com/p/31289463](https://zhuanlan.zhihu.com/p/31289463)
 
 
-8.2.3. 稀疏检出和浅克隆
 
-https://www.worldhello.net/gotgit/08-git-misc/090-sparse-checkout-and-shallow-clone.html
-
-Git只获取部分目录的内容（稀疏检出）
-
-https://zhgcao.github.io/2016/05/11/git-sparse-checkout/
-
-
-git 检出项目部分目录（稀疏检出）
-https://www.cnblogs.com/yifeng555/p/9957792.html
