@@ -50,9 +50,11 @@ YAML，XML和JSON是常用的数据序列化语言，下面会针对三者之间
 ### yaml
 YAML的例子中，比较个性的就是每个数据块都有相对应的空白格。
 这里就直接照搬原文示例了： 
-<img src="https://p0.meituan.net/dprainbow/538a4132067ca049bdaadbce9776fc9b68328.jpg>
+<img src="https://p0.meituan.net/dprainbow/538a4132067ca049bdaadbce9776fc9b68328.jpg">
+
 ### json
 <img src="https://p0.meituan.net/dprainbow/a8ad2577e5fe559a77a11e59af0a37cc85837.jpg"/>
+
 ### xml
 <img src="https://p0.meituan.net/dprainbow/4a1f2b10703f364f481d5cf6911bd9df119899.jpg"/>
 
