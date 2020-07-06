@@ -10,7 +10,7 @@ date: 2020-07-03
 ## YAMML 简介
 YAML和JSON、XML一样是数据序列化语言，使用缩进来描述格式化数据。
 下面的例子可以看到其如何工作的： 
-<img src="https://user-gold-cdn.xitu.io/2020/7/6/1732337bf9dfd2b7?w=1012&h=614&f=jpeg&s=68328">
+<img src="https://p0.meituan.net/dprainbow/538a4132067ca049bdaadbce9776fc9b68328.jpg">
 
 就像Python一样有个缩进约束，假如有过python开发体验的话，就会很明显的发现其使用缩进的数量来定义不同的区块。正如前面提到，有很多如JSON、XML这样被广泛使用的序列化语言。
 ### YAML使用场景
@@ -50,11 +50,11 @@ YAML，XML和JSON是常用的数据序列化语言，下面会针对三者之间
 ### yaml
 YAML的例子中，比较个性的就是每个数据块都有相对应的空白格。
 这里就直接照搬原文示例了： 
-<img src="https://user-gold-cdn.xitu.io/2020/7/6/1732337bf9dfd2b7?w=1012&h=614&f=jpeg&s=68328">
+<img src="https://p0.meituan.net/dprainbow/538a4132067ca049bdaadbce9776fc9b68328.jpg>
 ### json
-<img src="https://user-gold-cdn.xitu.io/2020/7/6/1732339c26374545?w=1028&h=720&f=jpeg&s=85837"/>
+<img src="https://p0.meituan.net/dprainbow/a8ad2577e5fe559a77a11e59af0a37cc85837.jpg"/>
 ### xml
-<img src="https://user-gold-cdn.xitu.io/2020/7/6/17323386fbf6b02f?w=1062&h=594&f=jpeg&s=119899"/>
+<img src="https://p0.meituan.net/dprainbow/4a1f2b10703f364f481d5cf6911bd9df119899.jpg"/>
 
 ## 三者在应用中的不同表现
 现在时候，大家发现三者的不同取决于在何种应用中使用。
@@ -86,4 +86,3 @@ YAML的例子中，比较个性的就是每个数据块都有相对应的空白�
 * [YAML vs JSON vs XML | What is the Difference Between Them?](https://www.csestack.org/yaml-vs-json-vs-xml-difference/)  
 #### 参考文章 
 * [官方文档](https://yaml.org/spec/1.2/spec.html) 
-
